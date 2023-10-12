@@ -104,4 +104,4 @@ jobs:
 
     - name: Run Python App
       run: python Calculator.py
-      if: steps.opa.outputs.allow == 'true'
+      if: steps.opa.outputs.allow == true
