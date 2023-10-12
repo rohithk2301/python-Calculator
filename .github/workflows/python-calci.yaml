@@ -42,5 +42,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: /home/runners/work/python-Calculator/report/report.json  # Specify the path to the report folder
+        path: /python-Calculator/report/report.json  # Specify the path to the report folder
         
