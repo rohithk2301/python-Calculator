@@ -29,11 +29,13 @@ jobs:
       continue-on-error: true  # Continue even if tests fail
 
     - name: Convert Coverage to JSON
-      run: coverage json -o report.json  # Name the report file directly
-      continue-on-error: true  # Continue even if coverage report generation fails
+      run: coverage json -o coverage-report.json  # Name the report file directly
+
+    - name: Copy JSON Report to Workspace
+      run: cp coverage-report.json $GITHUB_WORKSPACE
 
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: report.json  # Specify the path to the JSON report
+        path: coverage-report.json
