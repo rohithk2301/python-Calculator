@@ -107,8 +107,10 @@ jobs:
       id: opa
       run: |  
         opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
-      continue-on-error: true  # Continue even if the opa command fails
+        if [[ ${{ steps.opa.outputs.allow }} == 'false' ]]; then
+          echo "OPA check failed. Stopping the pipeline."
+          exit 1
+        fi
 
     - name: Run Python App
-      if: steps.opa.outputs.allow == 'true'  # Only run the app if OPA check is true
-      run: python Calculator.py  # Adjust to your Python app's entry point
+      run: python Calculator.py  # Adjust the command to run your Python application
