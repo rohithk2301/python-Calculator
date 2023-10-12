@@ -103,3 +103,8 @@ jobs:
         sudo cp opa /usr/local/bin
         opa version
 
+    # - name: OPA check
+    #   id: opa
+    #   run: |  
+    #    opa eval --format pretty --data policies/unit.rego --input report/report.json "data.main"
+
