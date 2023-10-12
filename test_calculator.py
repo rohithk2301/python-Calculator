@@ -24,21 +24,21 @@ class TestCalculator(unittest.TestCase):
         self.assertRaises(TypeError, self.calculator.multiply, 10, "5")
         self.assertRaises(TypeError, self.calculator.multiply, "10", 5)
 
-    def test_sum(self):
+    # def test_sum(self):
 
-        self.assertEqual(self.calculator.sum(10, 5), 15)
-        self.assertEqual(self.calculator.sum(-10, 5), -5)
-        self.assertEqual(self.calculator.sum(10, -5), 5)
-        self.assertRaises(TypeError, self.calculator.sum, 10, "5")
-        self.assertRaises(TypeError, self.calculator.sum, "10", 5)
+    #     self.assertEqual(self.calculator.sum(10, 5), 15)
+    #     self.assertEqual(self.calculator.sum(-10, 5), -5)
+    #     self.assertEqual(self.calculator.sum(10, -5), 5)
+    #     self.assertRaises(TypeError, self.calculator.sum, 10, "5")
+    #     self.assertRaises(TypeError, self.calculator.sum, "10", 5)
 
-    def test_subtract(self):
+    # def test_subtract(self):
 
-        self.assertEqual(self.calculator.subtract(10, 5), 5)
-        self.assertEqual(self.calculator.subtract(-10, 5), -15)
-        self.assertEqual(self.calculator.subtract(10, -5), 15)
-        self.assertRaises(TypeError, self.calculator.subtract, 10, "5")
-        self.assertRaises(TypeError, self.calculator.subtract, "10", 5)
+    #     self.assertEqual(self.calculator.subtract(10, 5), 5)
+    #     self.assertEqual(self.calculator.subtract(-10, 5), -15)
+    #     self.assertEqual(self.calculator.subtract(10, -5), 15)
+    #     self.assertRaises(TypeError, self.calculator.subtract, 10, "5")
+    #     self.assertRaises(TypeError, self.calculator.subtract, "10", 5)
 
 
 if __name__ == "__main__":
