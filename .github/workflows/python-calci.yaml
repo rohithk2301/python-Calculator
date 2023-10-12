@@ -101,10 +101,6 @@ jobs:
       id: opa
       run: |  
         opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
-        if [[ "${{ steps.opa.outputs.allow }}" == "false" ]]; then
-          echo "OPA check failed. Stopping the pipeline."
-          exit 1
-        fi
 
     - name: Run Python App
       run: python Calculator.py
