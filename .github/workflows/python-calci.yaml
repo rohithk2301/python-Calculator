@@ -43,3 +43,6 @@ jobs:
       with:
         name: code-coverage
         path: report  # Specify the path to the report folder
+        
+    -name: Code Coverage report file
+     run: echo report/report.json > /home/runners/work/python-Calculator/report/report.json
