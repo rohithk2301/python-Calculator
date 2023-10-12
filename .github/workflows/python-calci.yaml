@@ -1,0 +1,39 @@
+name: Python CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Adjust the Python version if needed
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # Adjust to your project's requirements
+
+    - name: Run Unit Tests
+      run: pytest  # Adjust to your testing framework and test command
+
+    - name: Install Coverage
+      run: pip install coverage
+
+    - name: Generate Code Coverage Report
+      run: coverage run -m pytest
+      continue-on-error: true  # Continue even if tests fail
+
+    - name: Convert Coverage to JSON
+      run: coverage json
+      continue-on-error: true  # Continue even if coverage report generation fails
+
+    - name: Upload Code Coverage
+      uses: actions/upload-artifact@v2
+      with:
+        name: code-coverage
+        path: .coverage
