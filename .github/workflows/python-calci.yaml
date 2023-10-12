@@ -100,10 +100,9 @@ jobs:
     - name: OPA check
       id: opa
       run: |  
-        opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
+        opa eval --format json --data policies/unit.rego --input report/report.json "data.play" > opa_result.json
+      continue-on-error: true
 
-    
-
-    - name: Run Python App
-      run: python Calculator.py
-      if: steps.opa.outputs.allow == 'true'
+    - name: Set OPA Allow Flag
+      id: set_opa_allow
+      run: echo "::set-output name=allow::
