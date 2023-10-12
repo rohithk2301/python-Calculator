@@ -64,39 +64,33 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x  # Adjust the Python version if needed
+        python-version: 3.x
 
     - name: Install dependencies
-      run: pip install -r requirements.txt  # Adjust to your project's requirements
+      run: pip install -r requirements.txt
 
     - name: Run Unit Tests
-      run: pytest  # Adjust to your testing framework and test command
+      run: pytest
 
     - name: Install Coverage
       run: pip install coverage
 
     - name: Generate Code Coverage Report for test_calculator.py
       run: coverage run -m pytest test_calculator.py
-      continue-on-error: true  # Continue even if tests fail
+      continue-on-error: true
 
     - name: Display Coverage Report
       run: coverage report
 
     - name: Convert Coverage to JSON for test_calculator.py
       run: coverage json -o report/report.json --include=test_calculator.py
-      continue-on-error: true  # Continue even if coverage report generation fails
+      continue-on-error: true
 
     - name: Display JSON Report
       run: cat report/report.json
 
-    - name: Upload Code Coverage
-      uses: actions/upload-artifact@v2
-      with:
-        name: code-coverage
-        path: report/report.json  # Specify the path to the copied report file
-
     - name: Setup OPA
-      id: Setup
+      id: Steup
       run: |
         curl -L -o opa https://openpolicyagent.org/downloads/v0.46.1/opa_linux_amd64_static
         chmod 755 ./opa
@@ -108,10 +102,10 @@ jobs:
       run: |  
         opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
         if [[ "${{ steps.opa.outputs.allow }}" == "false" ]]; then
-         echo "OPA check failed. Stopping the pipeline."
-         exit 1
+          echo "OPA check failed. Stopping the pipeline."
+          exit 1
         fi
 
-
     - name: Run Python App
-      run: python Calculator.py  # Adjust the command to run your Python application
+      run: python Calculator.py
+      if: steps.opa.outputs.allow == 'true'
