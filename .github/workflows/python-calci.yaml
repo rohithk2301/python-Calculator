@@ -29,11 +29,11 @@ jobs:
       continue-on-error: true  # Continue even if tests fail
 
     - name: Convert Coverage to JSON
-      run: coverage json
+      run: coverage json -o coverage.json  # Specify the output file name
       continue-on-error: true  # Continue even if coverage report generation fails
 
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: .coverage
+        path: coverage.json  # Adjust the path to the coverage report file
