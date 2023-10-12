@@ -106,6 +106,10 @@ jobs:
       run: echo ${{ steps.opa.outputs.allow }}
 
 
+    - name: Debug OPA Context
+      run: printenv
+
+
     - name: Run Python App
       run: python Calculator.py
       if: steps.opa.outputs.allow == true
