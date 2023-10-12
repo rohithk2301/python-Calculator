@@ -31,6 +31,9 @@ jobs:
     - name: Convert Coverage to JSON
       run: coverage json -o coverage-report.json  # Name the report file directly
 
+    - name: Display JSON Report
+      run: cat coverage-report.json
+
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
