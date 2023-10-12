@@ -42,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: report  # Specify the path to the report folder
+        path: /home/runner/work/your-repo-name/report  # Specify the path to the report folder
