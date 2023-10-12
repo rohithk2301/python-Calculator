@@ -102,14 +102,8 @@ jobs:
       run: |  
         opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
 
-    - name: Debug OPA Output
-      run: echo ${{ steps.opa.outputs.allow }}
-
-
-    - name: Debug OPA Context
-      run: printenv
-
+    
 
     - name: Run Python App
       run: python Calculator.py
-      if: steps.opa.outputs.allow == true
+      if: steps.opa.output.allow == 'true'
