@@ -31,9 +31,6 @@ jobs:
     - name: Convert Coverage to JSON
       run: coverage json -o coverage-report.json  # Name the report file directly
 
-    - name: Copy JSON Report to Workspace
-      run: cp coverage-report.json $GITHUB_WORKSPACE
-
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
