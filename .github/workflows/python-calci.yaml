@@ -44,6 +44,9 @@ jobs:
     - name: Copy JSON Report to Desired Folder
       run: cp report/report.json python-Calculator/report/report.json
 
+    - name: List Workspace Contents
+      run: ls -R
+
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
