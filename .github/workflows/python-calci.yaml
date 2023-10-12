@@ -108,18 +108,6 @@ jobs:
       run: |  
        opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
 
-  run-python-app:
-    needs: opa
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x  # Adjust the Python version if needed
-
     - name: Run Python App
       run: python Calculator.py  # Adjust to your Python app's entry point
 
