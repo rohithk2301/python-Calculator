@@ -106,8 +106,9 @@ jobs:
     - name: OPA check
       id: opa
       run: |  
-       opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
+        opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
+      continue-on-error: true  # Continue even if the opa command fails
 
     - name: Run Python App
+      if: steps.opa.outputs.allow == 'true'  # Only run the app if OPA check is true
       run: python Calculator.py  # Adjust to your Python app's entry point
-
