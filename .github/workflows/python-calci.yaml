@@ -28,18 +28,12 @@ jobs:
       run: coverage run -m pytest
       continue-on-error: true  # Continue even if tests fail
 
-    - name: Display Coverage Report
-      run: coverage report
-
     - name: Convert Coverage to JSON
-      run: coverage json -o report/report.json  # Specify the path to the report folder and name the report file
+      run: coverage json -o report.json  # Name the report file directly
       continue-on-error: true  # Continue even if coverage report generation fails
-
-    - name: Display JSON Report
-      run: cat report/report.json
 
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: /home/runner/work/your-repo-name/report/report.json  # Specify the path to the report folder
+        path: report.json  # Specify the path to the JSON report
