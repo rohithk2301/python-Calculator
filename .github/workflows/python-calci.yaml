@@ -41,6 +41,9 @@ jobs:
     - name: List Workspace Contents
       run: ls -R
 
+    - name: Copy JSON report to root
+      run: cp ./report/report.json ./report.json
+
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
