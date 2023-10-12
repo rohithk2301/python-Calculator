@@ -47,8 +47,6 @@
 #         name: code-coverage
 #         path: report/report.json  # Specify the path to the copied report file
 
-
-
 name: Python CI
 
 on: [push, pull_request]
@@ -100,9 +98,8 @@ jobs:
     - name: OPA check
       id: opa
       run: |  
-        opa eval --format json --data policies/unit.rego --input report/report.json "data.play" > opa_result.json
-      continue-on-error: true
+        opa eval --format pretty --data policies/unit.rego --input report/report.json "data.play"
 
-    - name: Set OPA Allow Flag
-      id: set_opa_allow
-      run: echo "::set-output name=allow::
+    - name: Run Python App
+      run: python Calculator.py
+      if: steps.opa.outputs.opa.includes("allow: true")
