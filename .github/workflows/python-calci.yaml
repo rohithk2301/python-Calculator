@@ -38,9 +38,11 @@ jobs:
     - name: Display JSON Report
       run: cat report/report.json
 
+    - name: Copy JSON Report to Desired Folder
+      run: cp report/report.json python-Calculator/report/report.json
+
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage
-        path: /python-Calculator/report/report.json  # Specify the path to the report folder
-        
+        path: python-Calculator/report/report.json  # Specify the path to the copied report file
