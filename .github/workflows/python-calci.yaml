@@ -38,6 +38,9 @@ jobs:
     - name: Display JSON Report
       run: cat report/report.json
 
+    - name: Create Directory
+      run: mkdir -p python-Calculator/report
+
     - name: Copy JSON Report to Desired Folder
       run: cp report/report.json python-Calculator/report/report.json
 
