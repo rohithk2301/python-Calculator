@@ -1,0 +1,13 @@
+# Basic example of a requirements.txt file
+
+# Flask is a web framework
+Flask==2.1.1
+
+# SQLAlchemy is an SQL toolkit and Object-Relational Mapping (ORM) library
+SQLAlchemy==1.4.25
+
+# Requests is an HTTP library for making requests to web services
+requests==2.26.0
+
+# Pytest is a testing framework
+pytest==7.1.3
