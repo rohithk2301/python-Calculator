@@ -98,7 +98,8 @@ jobs:
 
     - name: OPA check
       id: opa
-      run: |  
+      run: |
+        opa eval --format json --data policies/unit.rego --input report/report.json "data.play"
         opa eval --format json --data policies/unit.rego --input report/report.json "data.play" > opa_result.json
       continue-on-error: true
 
