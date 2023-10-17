@@ -1,0 +1,33 @@
+name: "Basic Workflow Dispatch"
+
+ 
+
+on:
+
+  repository_dispatch:
+
+    types:
+
+      - workflow_dispatch
+
+ 
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - run: echo "first workflow"
+
+     
+
+      - name: Print payload value
+
+        run: |
+
+          echo "Unit: ${{ github.event.client_payload.Unit}}"
+
+          echo "Integration: ${{ github.event.client_payload.Integration}}"
